@@ -2,33 +2,10 @@ import React, { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosError } from "axios";
 import { Text } from "@chakra-ui/react";
-
-interface Game {
-	id: number;
-	name: string;
-}
-
-interface GameResponse {
-	count: number;
-	results: Game[];
-}
+import useGames from "../hooks/useGames";
 
 const GameGrid = () => {
-	const [games, setGames] = useState<Game[]>([]);
-	const [errors, setErrors] = useState("");
-
-	useEffect(() => {
-		const fetchGames = async () => {
-			try {
-				const response = await apiClient.get<GameResponse>("/games");
-				setGames(response.data.results);
-			} catch (e) {
-				setErrors((e as AxiosError).message);
-			}
-		};
-
-		fetchGames();
-	}, []);
+	const { games, errors, isLoading } = useGames();
 
 	return (
 		<>
