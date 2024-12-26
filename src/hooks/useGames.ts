@@ -12,11 +12,11 @@ const useGames = () => {
 
 	useEffect(() => {
 		const controller = new AbortController();
+		setIsLoading(true);
 		const fetchGames = async () => {
 			try {
 				const response = await apiClient.get<GameResponse>("/games");
 				setGames(response.data.results);
-				setIsLoading(true);
 			} catch (e) {
 				if (e instanceof CanceledError) return;
 				setErrors((e as AxiosError).message);
