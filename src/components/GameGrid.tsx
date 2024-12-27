@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { AxiosError } from "axios";
-import { SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -17,7 +14,7 @@ const GameGrid = () => {
 			<SimpleGrid
 				columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
 				padding={10}
-				spacing={10}
+				spacing={5}
 			>
 				{isLoading &&
 					skeletons.map((skeleton) => (
@@ -27,10 +24,10 @@ const GameGrid = () => {
 					))}
 
 				{data.map((game) => (
-						<GameCardContainer key={game.id}>
-							<GameCard game={game}></GameCard>
-						</GameCardContainer>
-					))}
+					<GameCardContainer key={game.id}>
+						<GameCard game={game}></GameCard>
+					</GameCardContainer>
+				))}
 			</SimpleGrid>
 		</>
 	);
