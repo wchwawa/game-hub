@@ -1,4 +1,4 @@
-import { platform } from "os";
+
 
 export interface Platform{
   id: number;

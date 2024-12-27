@@ -1,7 +1,20 @@
-import { Game } from "../model/game";
+import { Game, Platform } from "../model/game";
 import useData from "./useData";
 import { Genre } from "./useGenre";
 
-const useGames = (genre: Genre | null) => useData<Game>('/games', {params: {genres: genre?.id}}, [genre?.id])
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) =>
+  useData<Game>(
+    '/games',
+    {
+      params: {
+        genres: selectedGenre?.id,
+        parent_platforms: selectedPlatform?.id,
+      }
+    },
+    [selectedGenre?.id, selectedPlatform?.id]
+  );
 
 export default useGames;
