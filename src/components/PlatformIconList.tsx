@@ -1,12 +1,5 @@
 import React from "react";
-import {
-	FaWindows,
-	FaPlaystation,
-	FaXbox,
-	FaApple,
-	FaLinux,
-	FaAndroid,
-} from "react-icons/fa";
+import { FaWindows, FaPlaystation, FaXbox, FaDesktop } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
@@ -20,26 +13,44 @@ interface Props {
 
 const PlatformIconList = ({ platforms }: Props) => {
 	const iconMap: { [key: string]: IconType } = {
-		// name:e.g. ps
-		// slug:e.g. ps
-		pc: FaWindows,
+		pc: FaDesktop,
 		playstation: FaPlaystation,
 		xbox: FaXbox,
 		nintendo: SiNintendo,
-		linux: FaLinux,
-		mac: FaApple,
+		linux: FaDesktop,
+		mac: FaDesktop,
+		android: MdPhoneIphone,
 		ios: MdPhoneIphone,
-		android: FaAndroid,
 		web: BsGlobe,
 	};
+
+	// handle duplicate icons
+	const distinctPlatforms = platforms.filter((platform, index, self) => {
+		// mobile
+		if (platform.slug === "ios" || platform.slug === "android") {
+			const firstMobileIndex = self.findIndex(
+				(p) => p.slug === "ios" || p.slug === "android"
+			);
+			return index === firstMobileIndex;
+		}
+		// PC
+		if (
+			platform.slug === "pc" ||
+			platform.slug === "linux" ||
+			platform.slug === "mac"
+		) {
+			const firstPCIndex = self.findIndex(
+				(p) => p.slug === "pc" || p.slug === "linux" || p.slug === "mac"
+			);
+			return index === firstPCIndex;
+		}
+		return true;
+	});
+
 	return (
 		<HStack marginY={1}>
-			{platforms.map((platform) => (
-				<Icon
-					key={platform.id}
-					as={iconMap[platform.slug]}
-					color={"gray.400"}
-				/>
+			{distinctPlatforms.map((platform) => (
+				<Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
 			))}
 		</HStack>
 	);

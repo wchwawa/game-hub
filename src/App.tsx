@@ -28,11 +28,13 @@ function App() {
 					base: `"nav" "main"`,
 					md: `"nav nav" "aside main"`,
 					lg: `"nav nav" "aside main"`,
+					xl: `"nav nav" "aside main"`,
 				}}
 				templateColumns={{
 					base: "1fr",
 					md: "200px 1fr",
 					lg: "200px 1fr",
+					xl: "200px 1fr",
 				}}
 			>
 				<GridItem area="nav">

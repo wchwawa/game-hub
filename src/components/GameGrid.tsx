@@ -17,11 +17,11 @@ const GameGrid = ({ gameQuery }: Props) => {
 		<>
 			{errors && <Text color="tomato">{errors}</Text>}
 			<SimpleGrid
-				columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+				columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
 				padding={2}
 				spacing={5}
 				marginTop={3}
-				marginRight={{lg: 5, xl: 5}}
+				marginRight={{ lg: 5, xl: 5 }}
 			>
 				{isLoading &&
 					skeletons.map((skeleton) => (
