@@ -19,7 +19,7 @@ const PlatformSelector = ({ onSelectedPlatform, selectedPlatform }: Props) => {
 				{selectedPlatform?.name || "All"}
 			</MenuButton>
 
-			<MenuList overflow="scroll" boxSize="200px">
+			<MenuList overflowY="auto" maxHeight="200px">
 				<MenuItem onClick={() => onSelectedPlatform(null)}> All</MenuItem>
 				{data.map((platform: Platform) => (
 					<MenuItem

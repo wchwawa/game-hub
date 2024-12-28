@@ -26,7 +26,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
 				Order by: {currentSortOrder?.label}
 			</MenuButton>
 
-			<MenuList overflow="scroll" boxSize="200px">
+			<MenuList overflowY="auto" maxHeight="200px">
 				{sortOrders.map((order) => (
 					<MenuItem
 						onClick={() => onSelectSortOrder(order.value)}
