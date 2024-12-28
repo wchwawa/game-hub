@@ -1,5 +1,5 @@
-{ "homepage": "https://wchwawa.github.io/game-spark",
-  "name": "game-hub",
+{ "homepage": "https://wchwawa.github.io/",
+  "name": "game-spark",
   "private": true,
   "version": "0.0.0",
   "type": "module",
