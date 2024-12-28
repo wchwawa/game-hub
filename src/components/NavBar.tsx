@@ -3,10 +3,12 @@ import React from 'react'
 import logo from '../assets/GameHub Resources/Logo/logo.webp'
 import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
-interface GameQuery {
+import GameHeading from './GameHeading'
+import { GameQuery } from '../App'
+interface Props {
   onSubmit: (searchText: string) => void;
 }
-const NavBar = ({onSubmit}: GameQuery) => {
+const NavBar = ({onSubmit}: Props) => {
 
   return (
     <HStack justifyContent = 'space-between' padding='10px'>
