@@ -18,6 +18,7 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
+  if (!game.parent_platforms) game.parent_platforms = [];
 	return (
 		<Card>
 			<Image src={getCroppedImageUrl(game.background_image)}></Image>
@@ -26,7 +27,7 @@ const GameCard = ({ game }: Props) => {
 
 				<HStack justifyContent={"space-between"}>
 					<PlatformIconList
-						platforms={game.parent_platforms.map((p) => p.platform)}
+						platforms={game.parent_platforms?.map((p) => p.platform)}
 					></PlatformIconList>
 					<CriticScore score={game.metacritic}></CriticScore>
 				</HStack>

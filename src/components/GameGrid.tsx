@@ -3,8 +3,6 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { Genre } from "../hooks/useGenre";
-import { Platform } from "../model/game";
 import { GameQuery } from "../App";
 
 interface Props {
@@ -23,7 +21,7 @@ const GameGrid = ({ gameQuery }: Props) => {
 				padding={2}
 				spacing={5}
 				marginTop={3}
-				marginRight={5}
+				marginRight={{lg: 5, xl: 5}}
 			>
 				{isLoading &&
 					skeletons.map((skeleton) => (
