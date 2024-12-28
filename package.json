@@ -1,14 +1,15 @@
-{
+{ "homepage": "https://wchwawa.github.io/game-spark/",
   "name": "game-hub",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://wchwawa.github.io/game-spark/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@chakra-ui/react": "2.10",
@@ -25,6 +26,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "gh-pages": "^6.2.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }
