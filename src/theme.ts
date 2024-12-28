@@ -14,8 +14,8 @@ const colors = {
     400: '#8c8c8c',
     500: '#737373',
     600: '#595959',
-    700: '#131212',
-    800: '#0b0b0b',
+    700: '#221f1e', // card
+    800: '#140d06',
     900: '#0d0d0d',
   },
 };
@@ -28,7 +28,7 @@ const styles = {
         // light mode value retrieved from theme
         '#d0d0d0',
         // your custom value for dark mode
-        '#0b0b0b',
+        '#161615',
       )(props),
     },
   }),
