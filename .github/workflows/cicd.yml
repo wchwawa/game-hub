@@ -1,0 +1,48 @@
+name: Deploy Vite React TypeScript to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      VITE_RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+      
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version: '23'  # Specify your Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+        
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: ./dist  # Ensure this matches Vite's output directory
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4.0.5
+
