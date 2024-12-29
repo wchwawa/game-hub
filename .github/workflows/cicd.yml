@@ -20,6 +20,9 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+      
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
